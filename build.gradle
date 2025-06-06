@@ -1,6 +1,7 @@
 plugins {
 	id "base"
 	id "org.jetbrains.kotlin.jvm" apply false // https://youtrack.jetbrains.com/issue/KT-30276
+	id "org.sonarqube" version "6.2.0.5505"
 }
 
 description = "Spring Boot Build"
@@ -22,5 +23,13 @@ subprojects {
 	configurations.all {
 		resolutionStrategy.cacheChangingModulesFor 0, "minutes"
 	}
+}
+
+sonar {
+  properties {
+    property "sonar.projectKey", "SmallKlaus_spring-boot"
+    property "sonar.organization", "smallklaus"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
 }
 
